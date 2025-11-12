@@ -17,42 +17,41 @@ let dummyData2 = {
 
 let tasks = [dummyData1, dummyData2];
 
-
 const {
     GraphQLObjectType,
     GraphQLString,
     GraphQLID,
     GraphQLInt,
-} = require('GraphQL');
+} = require('graphql');
 
-let TaskType {
-    name: 'task',
+const TaskType = new GraphQLObjectType({
+    name: 'Task',
     fields: {
-        id: GraphQLID,
-        title: GraphQLString,
-        weight: GraphQLInt,
-        description: GraphQLString,
+        id: { type: GraphQLID },
+        title: { type: GraphQLString },
+        weight: { type: GraphQLInt },
+        description: { type: GraphQLString },
     }
-}
+});
 
-type RootQueryType {
+const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
         task: {
             type: TaskType,
-            args: { id: GraphQLID },
+            args: { id: { type: GraphQLID } },
             resolve(parent, args) {
-                const findTask = _.find(tasks, task => task.id === args.id);
+                const findTask = lodash.find(tasks, task => task.id === args.id);
                 // Logic to get data from db / other source
                 return findTask;
             }
         }
     }
-};
+});
 
-// Export the schema and resolvers
-module.exports = {
-    TaskType,
-    RootQuery
-};
+const { GraphQLSchema } = require('graphql');
 
+// Export the schema
+module.exports = new GraphQLSchema({
+    query: RootQuery
+});

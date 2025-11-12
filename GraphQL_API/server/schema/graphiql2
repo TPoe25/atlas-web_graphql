@@ -1,0 +1,33 @@
+// const _ = require('lodash');
+
+const GraphiQL = {
+    "data": {
+        "task" : {
+            "title" : "Structure your webpage",
+        "weight" : 1,
+        "id": "2",
+            "description": "Copy the content of 0-index.html into 1-index.html. " +
+                "Create the head and body sections inside the html tag. " +
+                "Create the head and body tags (empty) in this order."
+        }
+    }
+}
+
+const getTaskById = (id) => {
+    return GraphiQL.data.task.filter(task => task.id === id)[0];
+}
+
+const getTasksByWeight = (weight) => {
+    return GraphiQL.data.task.filter(task => task.weight === weight);
+}
+
+const resolvers = {
+    Query: {
+        task: (_, { id }) => getTaskById(id),
+        tasksByWeight: (_, { weight }) => getTasksByWeight(weight)
+    }
+}
+
+module.exports = {
+    resolvers
+};
