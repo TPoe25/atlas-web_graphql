@@ -1,6 +1,8 @@
 const lodash = require('lodash');
 const express = require('express');
 
+const app = express();
+
 let dummyData1 = {
     id: "1",
     title: "Create your first webpage",
@@ -25,7 +27,7 @@ const {
 } = require('graphql');
 
 const TaskType = new GraphQLObjectType({
-    name: 'Task',
+    name: 'task',
     fields: {
         id: { type: GraphQLID },
         title: { type: GraphQLString },
@@ -53,5 +55,5 @@ const { GraphQLSchema } = require('graphql');
 
 // Export the schema
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
 });

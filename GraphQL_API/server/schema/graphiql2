@@ -1,4 +1,4 @@
-// const _ = require('lodash');
+const lodash = require('lodash');
 
 const GraphiQL = {
     "data": {
@@ -11,23 +11,4 @@ const GraphiQL = {
                 "Create the head and body tags (empty) in this order."
         }
     }
-}
-
-const getTaskById = (id) => {
-    return GraphiQL.data.task.filter(task => task.id === id)[0];
-}
-
-const getTasksByWeight = (weight) => {
-    return GraphiQL.data.task.filter(task => task.weight === weight);
-}
-
-const resolvers = {
-    Query: {
-        task: (_, { id }) => getTaskById(id),
-        tasksByWeight: (_, { weight }) => getTasksByWeight(weight)
-    }
-}
-
-module.exports = {
-    resolvers
 };
