@@ -84,7 +84,7 @@ const RootQuery = new GraphQLObjectType({
       type: ProjectType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
-        const findTask = lodash.find(projects, (project) => project.id === args.id);
+        const findTask = lodash.find(project, (project) => project.id === args.id);
         // Logic to get data from db / other source
         return findTask;
       },
