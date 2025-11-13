@@ -3,6 +3,15 @@ const express = require('express');
 
 const app = express();
 
+const { GraphQLSchema } = require('graphql');
+
+const {
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLID,
+    GraphQLInt,
+} = require('graphql');
+
 let dummyData1 = {
     id: "1",
     title: "Create your first webpage",
@@ -18,13 +27,6 @@ let dummyData2 = {
 };
 
 let tasks = [dummyData1, dummyData2];
-
-const {
-    GraphQLObjectType,
-    GraphQLString,
-    GraphQLID,
-    GraphQLInt,
-} = require('graphql');
 
 const TaskType = new GraphQLObjectType({
     name: 'task',
@@ -51,9 +53,20 @@ const RootQuery = new GraphQLObjectType({
     }
 });
 
-const { GraphQLSchema } = require('graphql');
+const ProjectType = new GraphQLObjectType({ // ProjectType is a new GraphQLObjectType
+    name: 'Project',
+    fields: {
+        id: { type: { type: GraphQLID } },
+        title: { type: GraphQLString },
+        weight: { type: GraphQLInt },
+        description: { type: GraphQLString }
+        }
+    }
+);
 
 // Export the schema
 module.exports = new GraphQLSchema({
     query: RootQuery,
+    taskType: TaskType,
+    projectType: ProjectType,
 });
