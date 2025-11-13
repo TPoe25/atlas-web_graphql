@@ -57,6 +57,17 @@ const TaskType = new GraphQLObjectType({
   },
 });
 
+const ProjectType = new GraphQLObjectType({
+  // ProjectType is a new GraphQLObjectType
+  name: "Project",
+  fields: {
+    id: { type: GraphQLID },
+    title: { type: GraphQLString },
+    weight: { type: GraphQLInt },
+    description: { type: GraphQLString },
+  },
+});
+
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -69,33 +80,18 @@ const RootQuery = new GraphQLObjectType({
         return findTask;
       },
     },
-  },
-});
-
-const ProjectType = new GraphQLObjectType({
-  // ProjectType is a new GraphQLObjectType
-  name: "Project",
-  fields: {
     project: {
-      id: { type: GraphQLID },
-      title: { type: GraphQLString },
-      weight: { type: GraphQLInt },
-      description: { type: GraphQLString },
-      project: {
-        type: TaskType,
-        args: { id: { type: GraphQLID } },
-        resolve(parent, args) {
-          const findProject = lodash.find(
-            project,
-            (project) => project.id === args.id
-          );
-          // Logic to get data from db / other source
-          return findProject;
-        },
+      type: ProjectType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        const findTask = lodash.find(projects, (project) => project.id === args.id);
+        // Logic to get data from db / other source
+        return findTask;
       },
     },
   },
 });
+
 
 // Export the schema
 module.exports = new GraphQLSchema({
