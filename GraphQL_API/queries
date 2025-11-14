@@ -1,12 +1,32 @@
 
 
-#3
+#2
 
 query {
   task(id: "2") {
   	title
     weight
     id
+    description
+  }
+}
+
+#3
+// Advanced HTML
+query{
+  project(id: "1") {
+    id
+    title
+    weight
+    description
+  }
+}
+// bootstrap
+query{
+  project(id: "2") {
+    id
+    title
+    weight
     description
   }
 }
