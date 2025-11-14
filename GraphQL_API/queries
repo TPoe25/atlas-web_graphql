@@ -1,0 +1,12 @@
+
+
+#3
+
+query {
+  task(id: "2") {
+  	title
+    weight
+    id
+    description
+  }
+}

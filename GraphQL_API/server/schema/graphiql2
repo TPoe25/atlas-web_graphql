@@ -15,3 +15,13 @@ const GraphiQL = {
         }
     }
 };
+
+
+//query {
+  //task(id: "2") {
+  	//title
+    //weight
+    //id
+    //description
+  //}
+//}
