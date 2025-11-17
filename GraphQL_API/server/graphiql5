@@ -1,5 +1,6 @@
 // added query for 5
-  projects {
+{
+projects {
     id
     title
     weight
