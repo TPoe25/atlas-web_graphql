@@ -1,0 +1,16 @@
+const _ = require('lodash');
+
+const { GraphQLSchema } = require('graphql');
+
+const GraphiQL = {
+    "data": {
+        "task" : {
+            "title" : "Structure your webpage",
+            "weight" : 1,
+            "description": "Copy the content of 0-index.html into 1-index.html. Create the head and bod tags (empty) in this order",
+            "project" : {
+                "title" : "Advanced HTML",
+            }
+        }
+    }
+};

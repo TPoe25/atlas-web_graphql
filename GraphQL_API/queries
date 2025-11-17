@@ -30,3 +30,26 @@ query{
     description
   }
 }
+
+4_1
+{
+  task(id: "2") {
+    title
+    weight
+    description
+    project {
+      title
+    }
+  }
+}
+4_2
+{
+  project(id: "1") {
+    title
+    weight
+    description
+    tasks {
+      title
+    }
+  }
+}
