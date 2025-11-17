@@ -53,3 +53,26 @@ query{
     }
   }
 }
+// query for all projects and tasks, including nested relationships
+5
+{
+  projects {
+    id
+    title
+    weight
+    description
+    tasks {
+      title
+      description
+    }
+  }
+  tasks {
+    id
+    title
+    weight
+    description
+    project {
+      title
+    }
+  }
+}

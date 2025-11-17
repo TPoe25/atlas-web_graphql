@@ -1,0 +1,18 @@
+// added query for 5
+  projects {
+    id
+    title
+    weight
+    description
+    tasks {
+      title
+      description
+    }
+    tasks {
+  	id
+		title
+ 		weight
+  	description
+    }
+  }
+}
