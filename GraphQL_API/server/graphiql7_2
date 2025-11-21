@@ -2,10 +2,11 @@ mutation {
     addTask(
         title: "Reboot styling",
         description: "Create your first GraphQL queries and mutations.",
+        weight: 2,
         projectId: "1",
     ) {
-        id
         title
+        weight
         description
         projectId
     }
